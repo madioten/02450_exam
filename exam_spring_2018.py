@@ -111,7 +111,37 @@ class exam:
 
     # ----------------------------------------------- OPG 10-----------------------------------------------
     def opg10():
-        # Solved in Maple
+        # From Maple file exam_2018.mw ported to Python
+
+        # Defining probabilities of dying by different travel modes
+        P_die_car = 0.000271
+        P_die_bus = 0.000004
+        P_die_air = 0.000003
+
+        # Probability of being alive after an air travel
+        P_alive_air = 1 - P_die_car
+
+        # Defining probabilities of choosing different travel modes
+        P_travel_car = 0.3
+        P_travel_bus = 0.1
+        P_travel_plane = 0.6
+
+        # Probability of not traveling by plane
+        P_travel_not_plane = 1 - P_travel_plane
+
+        # Probability of having travelled by plane given that the person died
+        P_travel_plane_died = (P_die_air * P_travel_plane) / (P_die_air * P_travel_plane + P_die_bus * P_travel_bus + P_die_car * P_travel_car)
+
+        # Print the calculated probabilities for verification
+        print("P_die_car:", P_die_car)
+        print("P_die_bus:", P_die_bus)
+        print("P_die_air:", P_die_air)
+        print("P_alive_air:", P_alive_air)
+        print("P_travel_car:", P_travel_car)
+        print("P_travel_bus:", P_travel_bus)
+        print("P_travel_plane:", P_travel_plane)
+        print("P_travel_not_plane:", P_travel_not_plane)
+        print("P_travel_plane_died:", P_travel_plane_died) # 0.02155..., hence answer C which is 2.16%
 
         return "C"
 
