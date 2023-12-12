@@ -193,8 +193,9 @@ def confidence(df, antecedentCols, consequentCols):
 def itemsets(df, support_min):
     """
     df is a pandas dataframe, with each row being a basket, and each column being an item
-    You can really really really benefit from writing the table in a text editor, copying it,
-    and using pd.from_clipboard().
+    You can really really really benefit from writing the space-formatted table in a text editor,
+    copying it, and using pd.read_clipboard().
+    For CSV-formatted table, use data = pd.read_clipboard(sep=',')
     """
     itemsets = []
     n = len(df)

@@ -138,10 +138,10 @@ class exam:
 
     # ----------------------------------------------- OPG 14-----------------------------------------------
     def opg14():
-        TP=14
-        FN=18
-        FP=10
-        TN=14
+        TP=14 # True Positive
+        FN=18 # False Negative
+        FP=10 # False Positive
+        TN=14 # True Negative
         conf = ensemble()
         conf.conf_matrix_stats(TP,FN,FP,TN,"all")
         # We can see the precision is 7/12 = 0.58333, so the answer is A
@@ -239,6 +239,7 @@ class exam:
         df = pd.DataFrame(data)
         assc = association_mining()
         # We add the indexes of the assocation rule elements
+        # Over one every time because the question said xHn but there are also xLn!
         assc.rule_stats(df,[3,5,7,9],[11])
         # Support = 0.2
         # Confidence = 0.666
@@ -265,15 +266,19 @@ class exam:
                [1,0,0,1,0,1,0,1,0,1,1,0]]
         df = pd.DataFrame(data)
         super = supervised()
-        super.naive_bayes([1,0,1,1,1,0,0,0,0,1],df,[3,5,7,9],[1,1,1,1],1)
+        super.naive_bayes([1,0,1,1,1,0,0,0,0,1], # safe airlines in black, i.e., O1, O3, O4, O5, and O10
+                          df,
+                          [3,5,7,9],  # Over one every time because the question said xHn but there are also xLn
+                          [1,1,1,1], # Given that an airline company has xH2 = 1, xH3 = 1, xH4 = 1, xH5 = 1
+                          1)
         # We see the answer is 0.0816 = 4/49. Answer C
         return "C"
 
     # ----------------------------------------------- OPG 22-----------------------------------------------
     def opg22():
         ens = ensemble()
-        true=[1,0,1,1,1,0,0,0,0,1]
-        pred=[1,0,1,0,1,0,0,0,0,0]
+        true=[1,0,1,1,1,0,0,0,0,1] # Safe airlines in black
+        pred=[1,0,1,0,1,0,0,0,0,0] # xL5
         ens.plot_roc(true,pred)
         # We can see this corresponds to ROC Curve 1.
         # The answer is A
@@ -323,6 +328,9 @@ class exam:
         clus.kmeans_1d(observations,3,init=[1.0,1.2,1.5])
         # We take the average of each cluster in the possible answers
         # We see that only answer A correspond to the cluster centers of the converged k-means algortihm
+
+        #The assigned clusters are: [0 1 1 2 2 2 2 2]
+        #hence it matches the format of A:  {1.0}, {1.2, 1.5}, {2.0, 2.2, 2.5, 3.0, 3.2}
         return "A"
 
     # ----------------------------------------------- OPG 26-----------------------------------------------
