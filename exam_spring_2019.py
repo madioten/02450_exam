@@ -19,12 +19,28 @@ class exam:
         pca = pca_calc()
         S = [14.14,11.41,9.46,4.19,0.17]
         pca.draw_curve_from_diagonal_values(S)
-        # We can from the output of the function that C must be the answer
+
+        # We can see from the output of the function that C must be the answer
+        # This is because C asked for the _last_ four prin. components while others asked for _first_.
+        # The last is calculated as: total - first = last four, aka 1 − (approx.) 0.47 = 0.53
         return "C"
 
     # ----------------------------------------------- OPG 3-----------------------------------------------
     def opg3():
         # Solved in Maple
+
+        # Should be a potential solution but the answer is said to be A, so this is incorrect:
+        # pca = pca_calc()
+        #
+        # v_matrix = [[0.94, -0.12, 0.32, -0.0, 0.0],
+        #             [0.01, 0.0, -0.02, 0.0, -1.0],
+        #             [-0.01, 0.07, 0.07, 0.99, -0.0],
+        #             [0.11, 0.99, 0.06, -0.08, 0.0],
+        #             [-0.33, -0.02, 0.94, -0.07, -0.02]]
+        # pca.proj(v_matrix,
+        #          [0.94, 0.01, -0.01, 0.11, -0.33], # x5, x6, x7, x8, x9 aka museums, parks, beaches, theatres, religious
+        #          [1],  # museums, parks, religious
+        #          V_full=True)
         
         return "E"
 
@@ -42,8 +58,8 @@ class exam:
                 [5.1,6.2,1.8,4.4,5.7,3.7,3.2,6.0,2.1,0.0]]
         df = pd.DataFrame(data)
         anom = anomaly()
-        anom.ARD(df,6,2)
-        return "E"
+        anom.ARD(df,6,2) # Average relative density, observation index 6, K = 2
+        return "D"
 
     # ----------------------------------------------- OPG 5-----------------------------------------------
     def opg5():
@@ -61,7 +77,10 @@ class exam:
         
         super = supervised()
 
-        prediction = super.knn_dist_pred_3d(df,[1,2],[3,4,5],[6,7,8,9,10],3)
+        prediction = super.knn_dist_pred_3d(df,[1,2],     # C1
+                                            [3,4,5],      # C2
+                                            [6,7,8,9,10], # C3
+                                            3)
         super.pred_stats(prediction["True_label"],prediction["Predicted_label"],show=True)
         # We can see the error rate is 0.6 = Answer C
         return "C"
@@ -87,7 +106,7 @@ class exam:
     # ----------------------------------------------- OPG 7-----------------------------------------------
     def opg7():
         clus = cluster()
-        truth = [0,0,1,1,1,2,2,2,2,2]
+        truth = [0,0,1,1,1,2,2,2,2,2] # ground-truth clustering, Z, indicated by the colors in Table 2
         cutoff_pred = [0,0,2,0,0,0,0,2,2,3]
         clus.cluster_similarity(truth,cutoff_pred)
         # We see the answer is B
@@ -96,12 +115,12 @@ class exam:
     # ----------------------------------------------- OPG 8-----------------------------------------------
     def opg8():
         dec = decision_trees()
-        root = [263,359,358]
-        split1_branch1 = [143,137,54]
-        split1_branch2 = [263-143,359-137,358-54]
+        root = [263,359,358] # ny=1 = 263, ny=2 = 359, ny=3 = 358
+        split1_branch1 = [143,137,54] # x4 ≤ 0.43
+        split1_branch2 = [263-143,359-137,358-54] # root - split1_branch1
         dec.purity_gain(root,split1_branch1,split1_branch2,"class_error")
-        split2_branch1 = [223,251,197]
-        split2_branch2 = [263-223,359-251,358-197]
+        split2_branch1 = [223,251,197] # x4 ≤ 0.55
+        split2_branch2 = [263-223,359-251,358-197] # root - split2_branch2
         dec.purity_gain(root,split2_branch1,split2_branch2,"class_error")
         # We see answer B is true
         return "B"
@@ -227,7 +246,20 @@ class exam:
     # ----------------------------------------------- OPG 16-----------------------------------------------
     def opg16():
         # Run through the apriori algorithm
-        
+
+        data = [[0, 0, 0, 1, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [0, 1, 1, 1, 1, 1, 0, 0, 0],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0],
+                [1, 0, 0, 1, 0, 0, 0, 0, 0],
+                [0, 0, 1, 1, 0, 0, 0, 1, 0],
+                [0, 0, 1, 1, 1, 0, 0, 0, 0],
+                [0, 0, 0, 0, 1, 0, 0, 0, 0],
+                [0, 1, 1, 0, 1, 0, 0, 0, 0],
+                [0, 0, 1, 1, 1, 0, 1, 0, 0]]
+
+
+
         return "B"
 
     # ----------------------------------------------- OPG 17-----------------------------------------------
