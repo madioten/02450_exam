@@ -18,7 +18,7 @@ class exam:
     # ----------------------------------------------- OPG 2-----------------------------------------------
     
     def opg2():
-        # We insert the the diagonal numbers from the S matrix
+        # We insert the diagonal numbers from the S matrix
         diag_values = [13.5,7.6,6.5,5.8,3.5,2.0]
         pca.draw_curve_from_diagonal_values(diag_values)
         # Can also be done by:
@@ -64,7 +64,7 @@ class exam:
         
         #It's not B
         
-        # The number infront of N is the "mixing proportion" correlated to the amount of observations.
+        # The number in front of N is the "mixing proportion" correlated to the amount of observations.
         # Since it must be lowest for the first cluster, it must mean the answer D is correct.
         return "D"
 
@@ -189,13 +189,13 @@ class exam:
 
     # ----------------------------------------------- OPG 17-----------------------------------------------
     def opg17():
-        # LOOK AT DENDOGRAM 1
+        # LOOK AT DENDROGRAM 1
         clu = cluster()
         #Cutoff at the level of 3 clusters = 3 vertical lines
         # Here we see O2 has been seperated, and O6 as well. 
         # Since O2 was seperated in the first cluster, we give it 2
         # And O6 we give 3
-        # The rest have not been seperated yet, but majority black so we give it 1
+        # The rest have not been seperated yet, but majority black, so we give it 1
         clusters_1=[1,2,1,1,1,3,1,1,1,1]
         
         # The true class labels are just O1 - O10 where black = 1, red = 2
@@ -238,7 +238,7 @@ class exam:
                [1,0,0,1,0,1,0,1,0,1,1,0]]
         df = pd.DataFrame(data)
         assc = association_mining()
-        # We add the indexes of the assocation rule elements
+        # We add the indexes of the association rule elements
         # Over one every time because the question said xHn but there are also xLn!
         assc.rule_stats(df,[3,5,7,9],[11])
         # Support = 0.2
@@ -327,7 +327,7 @@ class exam:
         clus = cluster()
         clus.kmeans_1d(observations,3,init=[1.0,1.2,1.5])
         # We take the average of each cluster in the possible answers
-        # We see that only answer A correspond to the cluster centers of the converged k-means algortihm
+        # We see that only answer A correspond to the cluster centers of the converged k-means algorithm
 
         #The assigned clusters are: [0 1 1 2 2 2 2 2]
         #hence it matches the format of A:  {1.0}, {1.2, 1.5}, {2.0, 2.2, 2.5, 3.0, 3.2}
@@ -374,7 +374,7 @@ class exam:
 #        ans.loc[21] = "Q20: {}".format(exam.opg20())
 #        ans.loc[22] = ""
 
-        ans.loc[23] = "Q21: {}".format(exam.opg21())
+#        ans.loc[23] = "Q21: {}".format(exam.opg21())
 #        ans.loc[24] = "Q22: {}".format(exam.opg22())
 #        ans.loc[25] = "Q23: {}".format(exam.opg23())
 #        ans.loc[26] = "Q24: {}".format(exam.opg24())
