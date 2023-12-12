@@ -129,7 +129,12 @@ class exam:
         # Probability of not traveling by plane
         P_travel_not_plane = 1 - P_travel_plane
 
-        # Probability of having travelled by plane given that the person died
+        # Given a person died travelling between Copenhagen and Oslo what is the probability it was from travelling by plane?
+        # Find P(travel_plane|died)
+
+        # Normal Bayes theorem:
+        # bayes = (P_Y_given_X * P_X) / (P_Y_given_X * P_X + P_Y_given_X_prime * P_X_prime)
+
         P_travel_plane_died = (P_die_air * P_travel_plane) / (P_die_air * P_travel_plane + P_die_bus * P_travel_bus + P_die_car * P_travel_car)
 
         # Print the calculated probabilities for verification
