@@ -245,7 +245,60 @@ class exam:
 
     # ----------------------------------------------- OPG 16-----------------------------------------------
     def opg16():
-        # Run through the apriori algorithm
+        # Run through the apriori algorithm (this code is wrong)
+
+        # import pandas as pd
+        #
+        # # Define the data provided by the user for Table 4
+        # data = [
+        #     [0, 0, 0, 1, 0, 0, 0, 0, 0],
+        #     [0, 0, 0, 0, 0, 0, 0, 0, 1],
+        #     [0, 1, 1, 1, 1, 1, 0, 0, 0],
+        #     [1, 0, 0, 0, 0, 0, 0, 0, 0],
+        #     [1, 0, 0, 1, 0, 0, 0, 0, 0],
+        #     [0, 0, 1, 1, 0, 0, 0, 1, 0],
+        #     [0, 0, 1, 1, 1, 0, 0, 0, 0],
+        #     [0, 0, 0, 0, 1, 0, 0, 0, 0],
+        #     [0, 1, 1, 0, 1, 0, 0, 0, 0],
+        #     [0, 0, 1, 1, 1, 0, 1, 0, 0]
+        # ]
+        # df = pd.DataFrame(data)
+        #
+        # # Extract only the first 4 features as per user's instruction
+        # df = df.iloc[:, :4]
+        #
+        # # Calculate the support for each item
+        # support = df.sum(axis=0) / len(df)
+        #
+        # # Given epsilon e = 0.35, we identify itemsets with support greater than e
+        # e = 0.35
+        # L1 = support > e
+        #
+        # # Convert the boolean series to int
+        # L1 = L1.astype(int).to_frame().transpose()
+        #
+        # L1
+        #
+        # from itertools import combinations
+        #
+        # # Convert the L1 row into a list of feature indices that have a value of 1
+        # L1_features = [index for index, value in enumerate(L1.iloc[0]) if value == 1]
+        #
+        # # Generate all combinations of the L1 features taken 2 at a time to form C2
+        # C2_combinations = list(combinations(L1_features, 2))
+        #
+        # # Create a DataFrame to represent C2
+        # # Initialize an empty DataFrame with the same number of columns as features
+        # C2 = pd.DataFrame(columns=range(df.shape[1]))
+        #
+        # # For each combination, set the corresponding columns to 1
+        # for combo in C2_combinations:
+        #     row = [1 if i in combo else 0 for i in range(df.shape[1])]
+        #     C2.loc[len(C2)] = row
+        #
+        # C2 = C2.astype(int)  # Convert the DataFrame to integer type
+        #
+        # C2
 
         return "B"
 
